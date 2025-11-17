@@ -16,7 +16,7 @@ const [toggle,setToggle]=useState(false)
 
   const getData=async()=>{
     try {
-        const data=await axios.get('http://localhost:8080/home/Note')
+        const data=await axios.get('https://notes-api-backend-vinq.onrender.com/home/Note')
         setNote(data.data.message)
     } catch (error) {
       console.log('error from getData')
@@ -29,7 +29,7 @@ const [toggle,setToggle]=useState(false)
             title:titleref.current.value,
             notes:noteref.current.value
           }
-          const AddNote=await axios.post('http://localhost:8080/home/AddNote',data,{
+          const AddNote=await axios.post('https://notes-api-backend-vinq.onrender.com/home/AddNote',data,{
             headers:{"Content-Type":"application/json"}
           })
          
@@ -55,7 +55,7 @@ setToggle(!toggle)
         title:titleref.current.value,
         notes:noteref.current.value
       }
-      const UpdateNote=await axios.put(`http://localhost:8080/home/UpdateNote/${findId.current}`,data,{
+      const UpdateNote=await axios.put(`https://notes-api-backend-vinq.onrender.com/home/UpdateNote/${findId.current}`,data,{
           headers:{"Content-Type":"application/json"}
 
           
@@ -72,7 +72,7 @@ setToggle(!toggle)
   }
   const deleteData=async(cur)=>{
     try {
-      const DeleteNote=await axios.delete(`http://localhost:8080/home/DeleteNote/${cur._id}`)
+      const DeleteNote=await axios.delete(`https://notes-api-backend-vinq.onrender.com/home/DeleteNote/${cur._id}`)
         
     } catch (error) {
        console.log('error from deletedata')
